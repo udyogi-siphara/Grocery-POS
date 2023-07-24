@@ -13,16 +13,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="http://mui.com/">
-        Your Website
-      </Link>{' '}
+      {'© Copyright'}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -38,7 +35,7 @@ export default function LogIn() {
   const [signinEmail, setEmail] = useState("");
   const [signinPassword, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,7 +49,7 @@ export default function LogIn() {
         .then((res)=>{
           
             const user = res.data.data;
-            navigate('/cart')
+            //navigate('/cart')
             // if(user.userEmail==="uwanitheekshani@gmail.com"){
             //   console.log("admin")
             //     navigate('/admindash')
@@ -119,7 +116,7 @@ export default function LogIn() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2 ,bgcolor: 'secondary.main'}}
             >
               Sign In
             </Button>
@@ -131,7 +128,7 @@ export default function LogIn() {
               </Grid>
               <Grid item>
                 <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"Don't have an account?   Sign Up"}
                 </Link>
               </Grid>
             </Grid>
