@@ -13,16 +13,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom'
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
+      {'©Copyright'}
+      {' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -35,11 +33,11 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleLinkClick =(event) =>{
     event.preventDefault();
-    navigate("/Login");
+    //navigate("/Login");
   }
 
   const handleSubmit = async (event) => {
@@ -62,10 +60,10 @@ export default function SignUp() {
         })
         .then((res) => {
           alert(res.data.message)
-          navigate("/Login");
+          //navigate("/Login");
           if (res.data.message === "saved") {
             localStorage.setItem('user', JSON.stringify(user))
-            navigate("/Login");
+            //navigate("/Login");
             //  return <Navigate to="/Hero"/>
           }
         });
@@ -150,11 +148,11 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2,bgcolor: 'secondary.main' }}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="flex-start">
               <Grid item>
                 <Link  href='#' variant="body2" onClick={handleLinkClick}>
                   Already have an account? Sign in
