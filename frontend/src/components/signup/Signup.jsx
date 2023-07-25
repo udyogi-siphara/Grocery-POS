@@ -55,7 +55,7 @@ export default function SignUp() {
     try {
 
       await axios
-        .post("http://localhost:3000/api/v1/user", {
+        .post("http://localhost:3500/api/v1/user", {
           user,
         })
         .then((res) => {
