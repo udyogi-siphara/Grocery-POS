@@ -4,6 +4,7 @@ import SignUp from "../signup/Signup";
 import Home from "../home/Home";
 import AdminLogIn from "../adminLogin/AdminLogin";
 import AdminDashBoard from "../adminDashBoard/AdminDashBoard";
+import ItemUpdate from '../itemUpdate/ItemUpdate';
 export const RouteHandler = () =>{
     return(
         <>   
@@ -13,6 +14,7 @@ export const RouteHandler = () =>{
               <Route path="/SignUp" element={<SignUp/>}/>
               <Route path='/admin' element={<AdminLogIn/>}/>
               <Route path="/admindash" element={<AdminDashBoard/>}/>
+              <Route path='/itemUpdate/:id' element={<ItemUpdate/>}/>
             </Routes>
         </>
     );
