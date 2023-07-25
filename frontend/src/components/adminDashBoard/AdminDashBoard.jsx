@@ -71,9 +71,7 @@ export default function AdminDashBoard() {
   return (
     <>
 
-      {/* <h4>Admin</h4> */}
-
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom sx={{marginTop:5}}>
         Item Panel
       </Typography>
 
@@ -101,7 +99,7 @@ export default function AdminDashBoard() {
 
         {/* <Stack direction="row" spacing={2} className='buttons-stack'> */}
           {/* <Button color="secondary">Update</Button> */}
-          <Button type="submit" variant="contained" color="success">
+          <Button type="submit" variant="contained" color="primary">
             Save
           </Button>
           {/* <Button variant="outlined" color="error">
