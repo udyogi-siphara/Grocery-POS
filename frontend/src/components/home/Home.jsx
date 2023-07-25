@@ -9,7 +9,7 @@ function Home() {
 
    
     <div class="carousel-item active">
-      <img src="https://i.postimg.cc/2Sxgb4th/pho.jpg" style={{width:'800px',height:'75vh',marginRight:'-300px'}}  class="d-block w-100" />
+      <images src="https://i.postimg.cc/2Sxgb4th/pho.jpg" style={{width:'800px',height:'75vh',marginRight:'-300px'}}  class="d-block w-100" />
     </div>
 
   </div>
