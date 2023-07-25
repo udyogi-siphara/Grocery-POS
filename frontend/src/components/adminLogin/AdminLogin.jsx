@@ -31,7 +31,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function AdminLogIn() {
+export default function AdminLogin() {
 
   const [signinEmail, setEmail] = useState("");
   const [signinPassword, setPassword] = useState("");
@@ -43,7 +43,7 @@ export default function AdminLogIn() {
 
     try{
       await axios
-        .post("http://localhost:3500/api/v1/adminLogin",{
+        .post("http://localhost:3000/api/v1/admin",{
             signinEmail,
             signinPassword
         })
@@ -51,12 +51,12 @@ export default function AdminLogIn() {
           
             const admin = res.data.data;
 
-            if(admin.adminEmail==="uwanitheekshani@gmail.com"){
+            if(admin.adminEmail==="udyogisiphara22@gmail.com"){
               console.log("admin")
                 navigate('/admindash')
             }else{
               console.log("user")
-              navigate('/Hero')
+              navigate('/Home')
             }
 
 

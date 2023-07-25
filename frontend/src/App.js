@@ -1,5 +1,4 @@
 import Nav from './components/nav/Nav';
-import SignUp from './components/signup/Signup';
 import { RouteHandler } from './components/router/RouteHandler';
 import './App.css';
 
