@@ -19,7 +19,7 @@ export default function FormPropsTextFields() {
       const navigate = useNavigate();
     
       useEffect(() => {
-          axios.get("http://localhost:3000/api/v1/getItem/"+id)
+          axios.get("http://localhost:3500/api/v1/getItem/"+id)
             .then(res => {console.log(res)
                 setItemCode(res.data.itemCode)
                 setItemName(res.data.itemName)
@@ -32,7 +32,7 @@ export default function FormPropsTextFields() {
 
         const Update = (e) => {
             e.preventDefault();
-            axios.put("http://localhost:3000/api/v1/updateItem/"+id, { itemCode, itemName, itemPrice, qtyOnHand })
+            axios.put("http://localhost:3500/api/v1/updateItem/"+id, { itemCode, itemName, itemPrice, qtyOnHand })
             .then(res => {
               // location.reload()
               alert("Updated");
@@ -59,7 +59,7 @@ export default function FormPropsTextFields() {
         <TextField
           required
           id="outlined-required"
-          label="Item-code"
+          //label="Item-code"
           placeholder="item code"
           value={itemCode}
           onChange={(e) => setItemCode(e.target.value)}
@@ -67,7 +67,7 @@ export default function FormPropsTextFields() {
         <TextField
          required
          id="outlined-required"
-         label="Item-name"
+         //label="Item-name"
          placeholder="item name"
          value={itemName}
          onChange={(e) => setItemName(e.target.value)}
@@ -75,7 +75,7 @@ export default function FormPropsTextFields() {
         <TextField
          required
          id="outlined-required"
-         label="Item-price"
+         //label="Item-price"
          placeholder="item price"
          value={itemPrice}
          onChange={(e) => setItemPrice(e.target.value)}
@@ -83,7 +83,7 @@ export default function FormPropsTextFields() {
         <TextField
          required
          id="outlined-required"
-         label="Qty-on-hand"
+         //label="Qty-on-hand"
          placeholder="qty on hand"
          value={qtyOnHand}
          onChange={(e) => setQtyOnHand(e.target.value)}
