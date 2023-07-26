@@ -31,7 +31,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function AdminLogin() {
+export default function AdminLogIn() {
 
   const [signinEmail, setEmail] = useState("");
   const [signinPassword, setPassword] = useState("");
@@ -43,7 +43,7 @@ export default function AdminLogin() {
 
     try{
       await axios
-        .post("http://localhost:3500/api/v1/admin",{
+        .post("http://localhost:3500/api/v1/adminLogin",{
             signinEmail,
             signinPassword
         })
@@ -51,16 +51,14 @@ export default function AdminLogin() {
           
             const admin = res.data.data;
 
-            if(admin.adminEmail==="udyogisiphara22@gmail.com" && admin.adminPassword==="200150700272"){
+            if(admin.adminEmail==="udyogisiphara22@gmail.com"){
               console.log("admin")
                 navigate('/admindash')
             }else{
               console.log("user")
               navigate('/Home')
             }
-
-
-        })
+          })
     }catch(err){
         alert("Email or password incorrect.!")
     }
@@ -84,7 +82,7 @@ export default function AdminLogin() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-           Admin Sign in
+            Admin Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -119,7 +117,7 @@ export default function AdminLogin() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: 'secondary.main' }}
+              sx={{ mt: 3, mb: 2 }}
             >
               Sign In
             </Button>
