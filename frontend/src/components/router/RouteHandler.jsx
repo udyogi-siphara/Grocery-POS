@@ -7,6 +7,7 @@ import AdminDashBoard from "../adminDashBoard/AdminDashBoard";
 import ItemUpdate from '../itemUpdate/ItemUpdate';
 import Cart from "../cart/Cart";
 import Order from "../order/Order";
+import Payments from "../payments/Payments";
 
 export const RouteHandler = () =>{
     return(
@@ -20,6 +21,7 @@ export const RouteHandler = () =>{
               <Route path='/itemUpdate/:id' element={<ItemUpdate/>}/>
               <Route path='/cart' element={<Cart/>}/>
               <Route path='/order' element={<Order/>}/>
+              <Route path='/payments' element={<Payments/>}/>
             </Routes>
         </>
     );
