@@ -8,6 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -33,14 +35,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default function ViewOrders() {
+export default function Checkout() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-  const customerEmail = queryParams.get('email');
+    const customerEmail = queryParams.get('email');
 
     const [orders, setOrders] = useState([])
 
-    
+    const getTotalPrice = () => {
+      const totalPrice = orders.reduce((sum, order) => sum + order.amount, 0);
+      return totalPrice;
+    };
 
     console.log(customerEmail);
 
@@ -85,6 +90,20 @@ export default function ViewOrders() {
 
 
   return (
+    <>
+    <Typography
+            sx={{
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+              margingTop:20,
+              fontSize:50
+            }}
+          >
+            CHECKOUT
+          </Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -116,5 +135,15 @@ export default function ViewOrders() {
         </TableBody>
       </Table>
     </TableContainer>
+    {orders.length > 0 && (
+        <div>
+          <h2 className='fs-2'>Total Price: {getTotalPrice()}</h2>
+        </div>
+    )}
+    <Link to={"/payments"}>
+     <Button  variant="outlined" style={{marginTop:10}} onClick={getTotalPrice}>Payments</Button>
+     </Link>
+    </>
   );
+  
 }

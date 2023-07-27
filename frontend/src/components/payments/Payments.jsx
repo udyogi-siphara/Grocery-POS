@@ -6,9 +6,11 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,7 +36,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Payments() {
 
-    const [orders, setOrders] = useState([])
+  const location = useLocation();
+  const { total } = location.state || {};
+  const [orders, setOrders] = useState([])
 
     useEffect(() => {
         fetchOrderDataFromServer();
@@ -52,6 +56,20 @@ export default function Payments() {
       };
 
   return (
+    <>
+    <Typography
+            sx={{
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+              margingTop:15,
+              fontSize:50
+            }}
+          >
+            PAYMENTS
+          </Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -78,5 +96,11 @@ export default function Payments() {
         </TableBody>
       </Table>
     </TableContainer>
+    {orders.length > 0 && (
+        <div>
+          <h1 className='fs-2'>Total Price:{total} </h1>
+        </div>
+    )}
+    </>
   );
 }
