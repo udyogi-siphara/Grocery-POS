@@ -8,6 +8,7 @@ import ItemUpdate from '../itemUpdate/ItemUpdate';
 import Cart from "../cart/Cart";
 import Order from "../order/Order";
 import Payments from "../payments/Payments";
+import Checkout from "../checkout/Checkout";
 
 export const RouteHandler = () =>{
     return(
@@ -22,6 +23,8 @@ export const RouteHandler = () =>{
               <Route path='/cart' element={<Cart/>}/>
               <Route path='/order' element={<Order/>}/>
               <Route path='/payments' element={<Payments/>}/>
+              <Route path='/checkOrders' element={<Checkout/>}/>
+
             </Routes>
         </>
     );
