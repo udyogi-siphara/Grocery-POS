@@ -50,6 +50,7 @@ export default function LogIn() {
         .then((res)=>{
           
             const user = res.data.data;
+            localStorage.setItem('formDetails',JSON.stringify(user.userEmail));
             navigate('/cart')
             
         })
@@ -72,7 +73,7 @@ export default function LogIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -111,7 +112,7 @@ export default function LogIn() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 ,bgcolor: 'secondary.main'}}
+              sx={{ mt: 3, mb: 2 ,bgcolor: 'secondary'}}
             >
               Sign In
             </Button>

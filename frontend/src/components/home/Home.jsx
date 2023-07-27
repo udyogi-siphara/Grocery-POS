@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+
 function Home() {
   return (
     <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
@@ -7,9 +8,10 @@ function Home() {
      <div class="carousel-inner">
 
         <div>
-          <h1 style={{color:"black"}}>Groccery Mart</h1>
-          <h3 style={{color:"gray"}}>
-            Amazing Finds in Every Vist!
+        
+          <h1 style={{color:"black"}}>Super Groccery Mart</h1>
+          <h3 style={{color:"black"}}>
+            Your one-stop-shop for quality products and unbeatable prices.
           </h3>
         </div>
    
