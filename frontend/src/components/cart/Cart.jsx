@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import './cart.css'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-// const AdminDash = require('../admindash/AdminDash')
+
 
 export default function Cart() {
 
@@ -72,10 +72,7 @@ export default function Cart() {
                   <option key={i + 1} value={i + 1}>{i + 1}</option>)
               })}
             </select>
-          {/* <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
+          
           <Typography gutterBottom variant="h5" component="div">
           Price: {item.itemPrice}/-
           </Typography>
