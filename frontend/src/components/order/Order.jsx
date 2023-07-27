@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-// import { Link} from 'react-router-dom';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -34,35 +34,33 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-export default function Order(props) {
+export default function OrdersCart(props) {
 
   const [orders, setOrders] = useState([])
 
 
   const [email, setEmail] = useState("");
-
-  
+  const [qtyOnHand, setQtyOnHand] = useState()
 
   useEffect(() => {
+
     var a = localStorage.getItem("myValue");
-    let parse = JSON.parse(a) ?? []; // Add the nullish coalescing operator here
-    setOrders(parse);
-  
+    let parse = JSON.parse(a);
+    setOrders(parse)
+
     var userEmail = localStorage.getItem("formDetails");
     var email = JSON.parse(userEmail);
-  
-    setEmail(email);
+
+    setEmail(email)
     console.log(email);
-  }, []);
+    
+  }, [])
 
 
 
   // console.log(e);
-  const handleCheckout = async (itemCode, itemName, qty, amount) => {
+  const handleCheckout = async (itemCode, itemName,itemPrice, qty, amount) => {
 
 
     const obj = {
@@ -74,6 +72,8 @@ export default function Order(props) {
     }
     // console.log(obj);
 
+    const uQty=obj.itemCode;
+
     try {
 
       await axios
@@ -83,7 +83,28 @@ export default function Order(props) {
         .then((res) => {
           alert(res.data.message)
       
+//===========================================================
+          axios
+          .get("http://localhost:3500/api/v1/getSelectItem",{
+            uQty
+          })
+          .then((res)=>{           
+    
+            console.log(res.data.qtyOnHand)
+          setQtyOnHand(res.data.qtyOnHand);
+             
+          }).catch(err=>console.log("err"))
+
+          // let i=qtyOnHand
+          // console.log()
+
+          axios.put("http://localhost:3500/api/v1/updateItem/"+uQty, { itemCode:itemCode, itemName:itemName, itemPrice:itemPrice, qtyOnHand:qtyOnHand-qty})
+
+//===============================================================
+
+
         }).catch(err => alert(err.response.data.message))
+
 
     } catch (err) {
       alert("Failed");
@@ -96,13 +117,14 @@ export default function Order(props) {
   const handleViewOrders = (customerEmail) => {
     // console.log(customerEmail)
     
-    window.location.href = `/viewOrders?email=${customerEmail}`;
+    window.location.href = `/checkOrders?email=${customerEmail}`;
   };
 
  
   return (
     <>
-     <Button variant="outlined" href="#outlined-buttons" sx={{marginTop:5}}  onClick={() => handleViewOrders(email)}>
+
+ <Button variant="outlined" href="#outlined-buttons" sx={{marginTop:5}}  onClick={() => handleViewOrders(email)}>
          CHECKOUT
      </Button>
 
@@ -113,11 +135,9 @@ export default function Order(props) {
           <TableHead>
             <TableRow>
               <StyledTableCell>Item Code</StyledTableCell>
-              {/* <StyledTableCell align="right">Item Code</StyledTableCell> */}
               <StyledTableCell align="right">Item Name</StyledTableCell>
               <StyledTableCell align="right">Quantity</StyledTableCell>
               <StyledTableCell align="right">Amount</StyledTableCell>
-              {/* <StyledTableCell align="right">Delete</StyledTableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -141,7 +161,7 @@ export default function Order(props) {
 
       {orders.map((order) => (
         <Button type="submit" onClick={() => {
-          handleCheckout(order.itemCode, order.itemName, order.qty, order.amount)
+          handleCheckout(order.itemCode, order.itemName,order.itemPrice, order.qty, order.amount)
         }} variant="contained">Check Out</Button>
       ))}
     </>

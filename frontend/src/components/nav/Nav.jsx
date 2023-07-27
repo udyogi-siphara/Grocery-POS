@@ -57,7 +57,7 @@ function Nav() {
               textDecoration: 'none',
             }}
           >
-            GROCERY MART
+            GROCCERY MART
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

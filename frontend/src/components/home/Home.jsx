@@ -6,13 +6,18 @@ function Home() {
  
      <div class="carousel-inner">
 
-
+        <div>
+          <h1 style={{color:"black"}}>Groccery Mart</h1>
+          <h3 style={{color:"gray"}}>
+            Amazing Finds in Every Vist!
+          </h3>
+        </div>
    
-    <div class="carousel-item active">
-      <images src="https://i.postimg.cc/2Sxgb4th/pho.jpg" style={{width:'800px',height:'75vh',marginRight:'-300px'}}  class="d-block w-100" />
-    </div>
+        <div class="carousel-item active">
+          <img src="https://img.freepik.com/free-vector/interior-supermarket-store-with-people-character-cashier-buyer_80328-122.jpg?w=826&t=st=1690458747~exp=1690459347~hmac=247e7de67ab306c5300243a90bbed658ccbac1e55c70ffaec974417a3eb01d94" style={{width:'1000px',height:'65vh'}}  class="d-block w-100" />
+        </div>
 
-  </div>
+    </div>
 </div>
   );
 

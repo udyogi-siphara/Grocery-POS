@@ -47,9 +47,7 @@ export default function ViewOrders() {
     useEffect( () => {
      
      loadAll();
-
-
-      }, []);
+    }, []);
 
 
       const loadAll = async () =>{
