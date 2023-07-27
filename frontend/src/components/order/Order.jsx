@@ -102,15 +102,8 @@ export default function Order(props) {
  
   return (
     <>
-
-      {/* <Link to={'/viewOrders'}>
-      <Button variant="outlined" href="#outlined-buttons">
-        View Orders
-      </Button>
-       </Link> */}
-
- <Button variant="outlined" href="#outlined-buttons"  onClick={() => handleViewOrders(email)}>
-         View Orders
+     <Button variant="outlined" href="#outlined-buttons" sx={{marginTop:5}}  onClick={() => handleViewOrders(email)}>
+         CHECKOUT
      </Button>
 
       <label></label>
@@ -136,8 +129,6 @@ export default function Order(props) {
                 <StyledTableCell align="right">{order.itemName}</StyledTableCell>
                 <StyledTableCell align="right">{order.qty}</StyledTableCell>
                 <StyledTableCell align="right">{order.amount}</StyledTableCell>
-                {/* <StyledTableCell align="right">{order.itemName}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
               </StyledTableRow>
 
             ))}
