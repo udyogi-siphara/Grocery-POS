@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom'
+
 
 function Copyright(props) {
   return (
@@ -62,7 +62,7 @@ export default function SignUp() {
           if (res.data.message === "saved") {
             localStorage.setItem('user', JSON.stringify(user))
             navigate("/Login");
-            //  return <Navigate to="/Hero"/>
+            
           }
         });
     } catch (err) {

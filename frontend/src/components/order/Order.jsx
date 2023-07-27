@@ -59,7 +59,7 @@ export default function OrdersCart(props) {
 
 
 
-  // console.log(e);
+ 
   const handleCheckout = async (itemCode, itemName,itemPrice, qty, amount) => {
 
 
@@ -70,7 +70,7 @@ export default function OrdersCart(props) {
       qty: qty,
       amount: amount
     }
-    // console.log(obj);
+    
 
     const uQty=obj.itemCode;
 
@@ -94,9 +94,6 @@ export default function OrdersCart(props) {
           setQtyOnHand(res.data.qtyOnHand);
              
           }).catch(err=>console.log("err"))
-
-          // let i=qtyOnHand
-          // console.log()
 
           axios.put("http://localhost:3500/api/v1/updateItem/"+uQty, { itemCode:itemCode, itemName:itemName, itemPrice:itemPrice, qtyOnHand:qtyOnHand-qty})
 

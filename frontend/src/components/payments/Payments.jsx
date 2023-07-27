@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -35,17 +34,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function Payments() {
+  const getTotalPrice = () => {
+    const totalPrice = orders.reduce((sum, order) => sum + order.amount, 0);
+    return totalPrice;
+  };
 
-  const location = useLocation();
-  const { total } = location.state || {};
+  
   const [orders, setOrders] = useState([])
+ 
 
     useEffect(() => {
         fetchOrderDataFromServer();
       }, [])
     
       const fetchOrderDataFromServer = () => {
-        // Your code to fetch data from the server goes here
+        
         axios.get('http://localhost:3500/api/v1/getOrder')
           .then((res) => {
             setOrders(res.data);
@@ -72,7 +75,7 @@ export default function Payments() {
           </Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
+        <TableHead sx={{bgcolor:'gray'}}>
           <TableRow>
             <StyledTableCell>User Email</StyledTableCell>
             <StyledTableCell align="right">Item Code</StyledTableCell>
@@ -97,8 +100,8 @@ export default function Payments() {
       </Table>
     </TableContainer>
     {orders.length > 0 && (
-        <div>
-          <h1 className='fs-2'>Total Price:{total} </h1>
+        <div style={{display:'flex' , justifyContent:'flex-end'}}>
+          <h2 className='fs-2'>Total Price:</h2> <h2 style={{color:"crimson"}}>{getTotalPrice()}</h2>
         </div>
     )}
     </>

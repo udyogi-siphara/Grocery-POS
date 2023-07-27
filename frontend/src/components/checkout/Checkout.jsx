@@ -141,7 +141,7 @@ export default function Checkout() {
         </div>
     )}
     <Link to={"/payments"}>
-     <Button  variant="outlined" style={{marginTop:10}} onClick={getTotalPrice}>Payments</Button>
+     <Button  variant="outlined" style={{marginTop:10}}>Payments</Button>
      </Link>
     </>
   );

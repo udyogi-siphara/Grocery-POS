@@ -15,7 +15,7 @@ const saveUser = (req,res) => {
     User.findOne({userEmail: req.body.user.userEmail})
         .then(response =>{
             if(response === null){
-                //no exist student
+                //no exist user
                 userObj.save().then(()=>{
                     res.status(201).json({message:"Saved"})
                 }).catch((err)=>{
@@ -49,9 +49,5 @@ const getUser = (req, res) => {
         })
 }
 
-
-
-const deleteUser = () => { }
-const updateUser = () => { }
 
 module.exports = {saveUser, getUser}

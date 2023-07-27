@@ -22,11 +22,7 @@ export default function Cart() {
     const [itemPrice, setItemPrice] = useState()
     const [qtyOnHand, setQtyOnHand] = useState()
     
-    const handleClick = () => {
-      // if (!localStorage.getItem("token")) {
-      //   // navigate("/login")
-      // }
-    }
+    
     const handleQty = (e) => {
       setQty(e.target.value);
     }
@@ -82,9 +78,9 @@ export default function Cart() {
           onChange={(e) => setItemName(e.target.value)}>
           {item.itemName}
           </Typography>
-          <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} onClick={handleClick} onChange={handleQty}>
+          <select className="m-2 h-100 w-20 bg-success text-black rounded" style={{ select: "#FF0000" }} onChange={handleQty}>
             
-              {Array.from(Array(6), (e, i) => {
+              {Array.from(Array(item.qtyOnHand), (e, i) => {
                 return (
                   <option key={i + 1} value={i + 1}>{i + 1}</option>)
               })}

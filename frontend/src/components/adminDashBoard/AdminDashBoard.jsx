@@ -95,17 +95,11 @@ export default function AdminDashBoard() {
         <TextField
           name="qtyOnHand" label="QTYOnHand" variant="outlined" onChange={(e) => setQtyOnHand(e.target.value)}
         />
-
-
-        {/* <Stack direction="row" spacing={2} className='buttons-stack'> */}
-          {/* <Button color="secondary">Update</Button> */}
+        
           <Button type="submit" variant="contained" color="primary">
             Save
           </Button>
-          {/* <Button variant="outlined" color="error">
-            Delete
-          </Button> */}
-        {/* </Stack> */}
+          
 
 
       </Box>
